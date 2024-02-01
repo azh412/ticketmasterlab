@@ -53,6 +53,6 @@ public class Show {
     }
 
     public String toString() {
-        return date + "\t$" + price + "\t" + quantity + "\t" + performer + "\t" + city;
+        return date + "\t$" + price + "\t\t" + quantity + "\t\t" + performer + "\t\t\t" + city;
     }
 }
