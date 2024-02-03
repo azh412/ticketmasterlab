@@ -20,16 +20,23 @@ public class TicketMasterDriver {
             System.out.println("Invalid entry. Please provide an integer 1-6");
             userInput = scanner.nextLine();
         }
+        System.out.println();
         TicketMaster ticketMaster = new TicketMaster();
         while(!userInput.equals("6")){
             int userInputNumber = Integer.parseInt(userInput);
             if(userInputNumber == 1){
                 System.out.println("What city would you like to search for?");
                 String city = scanner.nextLine();
+                System.out.println();
                 ArrayList<Show> searchResults = ticketMaster.searchByCity(city);
-                ticketMaster.printDivider();
-                for (Show result: searchResults) {
-                    System.out.println(result);
+                if(searchResults.isEmpty()){
+                    System.out.println("There are no shows in the specified city.");
+                }
+                else {
+                    ticketMaster.printDivider();
+                    for (Show result : searchResults) {
+                        System.out.println(result);
+                    }
                 }
             }
             if(userInputNumber == 2){
@@ -74,7 +81,9 @@ public class TicketMasterDriver {
                 System.out.println("Invalid entry. Please provide an integer 1-6");
                 userInput = scanner.nextLine();
             }
+            System.out.println();
         }
+        scanner.close();
     }
     public static boolean isNumeric(String str) {
         try {

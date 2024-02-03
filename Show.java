@@ -53,6 +53,12 @@ public class Show {
     }
 
     public String toString() {
-        return date + "\t$" + price + "\t\t" + quantity + "\t\t" + performer + "\t\t\t" + city;
+        int spaces = 30 - performer.length();
+        String s1 = date + "\t$" + price + "\t\t" + quantity + "\t\t" + performer;
+        for (int i = 0; i < spaces; i++){
+            s1 += " ";
+        }
+        s1 += city;
+        return s1;
     }
 }

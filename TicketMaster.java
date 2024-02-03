@@ -39,16 +39,19 @@ public class TicketMaster {
             e.printStackTrace();
         }
     }
-    public ArrayList<Show> sortByPrice(){
-        for(int i = 1; i < shows.size(); i++){
-            int j = i+1;
-            while(j < shows.size() && shows.get(j).getPrice() > shows.get(i).getPrice()){
-                shows = swap(shows, j,i);
-                j++;
+    public ArrayList<Show> sortByPrice() {
+        for (int i = 1; i < shows.size(); i++) {
+            Show key = shows.get(i);
+            int j = i-1;
+            while (j >= 0 && shows.get(j).getPrice() > key.getPrice()) {
+                shows.set(j + 1, shows.get(j));
+                j--;
             }
+            shows.set(j + 1, key);
         }
         return shows;
     }
+
     public ArrayList<Show> sortByPerformer(){
         for(int i = 0; i < shows.size(); i++){
             int minimumIndex = i;
@@ -70,14 +73,14 @@ public class TicketMaster {
     public ArrayList<Show> searchByCity(String city){
         ArrayList<Show> searchResults = new ArrayList<>();
         for(Show item: shows){
-            if(item.getCity().equals(city)){
+            if(item.getCity().equalsIgnoreCase(city)){
                 searchResults.add(item);
             }
         }
         return searchResults;
     }
     public void printDivider(){
-        System.out.println("Date\t\tPrice\t\tQty\t\tPerformer\t\t\tCity");
-        System.out.println("------------------------------------------------------------------");
+        System.out.println("Date\t\tPrice\t\tQty\t\tPerformer\t\t\t\t\t\tCity");
+        System.out.println("-------------------------------------------------------------------------------");
     }
 }
